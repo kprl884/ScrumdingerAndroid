@@ -16,12 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MeetingScreen() {
-
-}
-
-@Composable
-fun MeetingScreenUI(modifier: Modifier) {
+fun MeetingScreen(modifier: Modifier) {
   Column(
     modifier
       .fillMaxWidth()
@@ -81,5 +76,5 @@ fun MeetingScreenUI(modifier: Modifier) {
 )
 @Composable
 fun PreviewMeetingScreen() {
-  MeetingScreenUI(modifier = Modifier)
+  MeetingScreen(modifier = Modifier)
 }

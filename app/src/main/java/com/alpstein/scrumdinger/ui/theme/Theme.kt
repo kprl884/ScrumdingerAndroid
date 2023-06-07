@@ -27,9 +27,35 @@ private val LightColorPalette = lightColors(
     onSurface = Color.Black,
     */
 )
-enum class Theme(val accentColor: Color, val mainColor: Color) {
-  MAGENTA(Color.White, Color.Magenta),
-  YELLOW(Color.Black, Color.Yellow)
+
+enum class Theme(private val rawValue: Color) {
+  Bubblegum(bubblegumColor),
+  Indigo(indigoColor),
+  Lavender(lavenderColor),
+  Magenta(magentaColor),
+  Navy(navyColor),
+  Orange(orangeColor),
+  Oxblood(oxbloodColor),
+  Periwinkle(periwinkleColor),
+  Poppy(poppy),
+  Purple(purpleColor),
+  Sky(skyColor),
+  Tan(tanColor),
+  Teal(tealColor),
+  Yellow(yellowColor);
+
+  val accentColor: Color
+    get() {
+      return when (this) {
+        Bubblegum, Lavender, Orange, Periwinkle, Poppy, Sky, Tan, Teal, Yellow -> Color.Black
+        Indigo, Magenta, Navy, Oxblood, Purple -> Color.White
+      }
+    }
+
+  val mainColor: Color
+    get() {
+      return rawValue
+    }
 }
 
 

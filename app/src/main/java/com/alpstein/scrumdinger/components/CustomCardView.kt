@@ -8,7 +8,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
@@ -21,15 +20,15 @@ import com.alpstein.scrumdinger.ui.theme.Theme
 
 @Composable
 fun CustomCardView(scrum: DailyScrum) {
-  Card() {
+  Card {
     Column(
       modifier = Modifier
-        .background(color = Color.Yellow)
+        .background(color = scrum.theme.mainColor)
         .fillMaxWidth()
         .padding(start = 8.dp, top = 8.dp, bottom = 8.dp, end = 8.dp)
     ) {
       Text(text = scrum.title, fontFamily = FontFamily.Serif, fontWeight = FontWeight.Bold)
-      Row() {
+      Row {
         Row(modifier = Modifier.semantics(mergeDescendants = true) {}) {
           Icon(
             painter = painterResource(id = R.drawable.people),
@@ -70,6 +69,10 @@ fun CustomCardView(scrum: DailyScrum) {
 @Composable
 fun PreviewCustomCardView() {
   CustomCardView(
-    scrum = DailyScrum(title = "Backend Dev", attendees = listOf("Soner", "Nesrin"), lengthInMinutes = 10, Theme.YELLOW),
+    scrum = DailyScrum(
+      title = "Backend Dev",
+      attendees = listOf("Soner", "Nesrin"),
+      lengthInMinutes = 10,
+      Theme.Magenta)
   )
 }
