@@ -11,9 +11,8 @@ import com.alpstein.scrumdinger.model.MockData
 fun ScrumsScreen() {
   LazyColumn {
     val items = MockData.dailyScrumData()
-
-    items(items) { DailyScrum ->
-      CustomCardView(scrum = DailyScrum)
+    items(items) { dailyScrum ->
+      CustomCardView(scrum = dailyScrum)
     }
   }
 }
