@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MeetingScreen(modifier: Modifier) {
+fun MeetingScreen(modifier: Modifier, onNavigate: ()-> Unit) {
   Column(
     modifier
       .fillMaxWidth()
@@ -76,5 +76,8 @@ fun MeetingScreen(modifier: Modifier) {
 )
 @Composable
 fun PreviewMeetingScreen() {
-  MeetingScreen(modifier = Modifier)
+  MeetingScreen(
+    modifier = Modifier,
+    onNavigate = {}
+  )
 }
