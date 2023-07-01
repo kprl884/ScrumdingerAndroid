@@ -1,6 +1,7 @@
 package com.alpstein.scrumdinger.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
@@ -19,13 +20,16 @@ import com.alpstein.scrumdinger.model.DailyScrum
 import com.alpstein.scrumdinger.ui.theme.Theme
 
 @Composable
-fun CustomCardView(scrum: DailyScrum) {
+fun CustomCardView(scrum: DailyScrum, scrumClick : () -> Unit) {
   Card {
     Column(
       modifier = Modifier
         .background(color = scrum.theme.mainColor)
         .fillMaxWidth()
         .padding(start = 8.dp, top = 8.dp, bottom = 8.dp, end = 8.dp)
+        .clickable {
+          scrumClick()
+        }
     ) {
       Text(text = scrum.title, fontFamily = FontFamily.Serif, fontWeight = FontWeight.Bold)
       Row {
@@ -74,5 +78,7 @@ fun PreviewCustomCardView() {
       attendees = listOf("Soner", "Nesrin"),
       lengthInMinutes = 10,
       Theme.Magenta)
-  )
+  ) {
+
+  }
 }

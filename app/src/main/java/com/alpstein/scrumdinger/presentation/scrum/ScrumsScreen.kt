@@ -1,6 +1,5 @@
 package com.alpstein.scrumdinger.presentation.scrum
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,6 +15,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import com.alpstein.scrumdinger.components.CustomCardView
 import com.alpstein.scrumdinger.model.MockData
@@ -26,14 +26,13 @@ fun ScrumsScreen(onNavigate: () -> Unit) {
         topBar = {
             TopAppBar(
                 title = {
-
                 },
                 actions = {
                     IconButton(onClick = {}) {
                         Icon(
                             Icons.Filled.Add,
                             contentDescription = "New Scrum",
-                            tint = Color.Cyan
+                            tint = Color.Blue
                         )
                     }
                 },
@@ -42,15 +41,18 @@ fun ScrumsScreen(onNavigate: () -> Unit) {
             )
         }
     ) { contentPadding ->
-        Column(modifier = Modifier.padding(contentPadding)) {
-            Text(text = "Daily Scrums", style = MaterialTheme.typography.h4)
+        Column() {
+            Text(text = "Daily Scrums",
+                fontFamily = FontFamily.SansSerif,
+                style = MaterialTheme.typography.h4)
             LazyColumn(
-                Modifier.clickable {
-                    onNavigate()
-                }) {
+                Modifier.padding(contentPadding)) {
                 val items = MockData.dailyScrumData()
                 items(items) { dailyScrum ->
-                    CustomCardView(scrum = dailyScrum)
+                    CustomCardView(
+                        scrum = dailyScrum,
+                        scrumClick = onNavigate
+                    )
                 }
             }
         }
